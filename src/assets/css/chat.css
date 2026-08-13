@@ -2,13 +2,14 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: rgba(5, 49, 248, 0.95);
-    color: #ffffff;
-    border-radius: 10px;
-    width: 320px;
-    max-height: 420px;
+    background: var(--color-surface, #ffffff);
+    color: var(--color-text, #334155);
+    border-radius: 16px;
+    width: 340px;
+    max-height: 440px;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
+    border: 1px solid #e2e8f0;
     z-index: 9999;
 }
 
@@ -16,58 +17,89 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 1rem;
+    padding: 0.85rem 1rem;
     cursor: move;
     user-select: none;
-    background: rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #ffffff;
     font-weight: 600;
+    font-size: 0.95rem;
 }
 
 #chat-close {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.15);
     border: none;
     color: #ffffff;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 1;
     cursor: pointer;
-    padding: 0 0.25rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#chat-close:hover {
+    background: rgba(255, 255, 255, 0.25);
 }
 
 #chat-box {
     overflow-y: auto;
-    max-height: 320px;
-    padding: 0.75rem 1rem 1rem;
+    max-height: 340px;
+    padding: 1rem;
+    background: #f8fafc;
 }
 
 #chat-box input {
     width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #dddddd;
-    border-radius: 5px;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
     margin-top: 0.5rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+#chat-box input:focus {
+    outline: 2px solid #bfdbfe;
+    border-color: #93c5fd;
 }
 
 #chat-box button {
-    margin: 0.35rem 0.25rem 0.35rem 0;
-    padding: 0.45rem 0.75rem;
-    background-color: #ffffff;
-    color: #0531f8;
+    margin: 0.4rem 0.25rem 0.4rem 0;
+    padding: 0.55rem 0.9rem;
+    background: #1d4ed8;
+    color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: 999px;
     cursor: pointer;
     font-weight: 600;
+    font-size: 0.85rem;
+    font-family: inherit;
+    transition: background 0.2s;
 }
 
 #chat-box button:hover {
-    background-color: #e8eeff;
+    background: #1e3a8a;
 }
 
 .mensaje,
 .mensaje-bienvenida {
-    padding: 0.5rem 0.75rem;
-    border-radius: 8px;
-    margin: 0.35rem 0;
-    background: rgba(255, 255, 255, 0.15);
+    padding: 0.65rem 0.85rem;
+    border-radius: 12px;
+    margin: 0.4rem 0;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.mensaje-bienvenida {
+    background: #dbeafe;
+    border-color: #bfdbfe;
+    color: #1e3a8a;
 }
 
 #chat-toggle {
@@ -75,25 +107,21 @@
     bottom: 16px;
     right: 16px;
     display: none;
-    background-color: #0531f8;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
     color: #ffffff;
-    padding: 0.65rem 1rem;
+    padding: 0.75rem 1.15rem;
     border: none;
     border-radius: 999px;
     cursor: pointer;
     z-index: 10000;
     font-weight: 600;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-size: 0.9rem;
+    font-family: inherit;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
 }
 
 #chat-toggle:hover {
-    background-color: #0426c4;
-}
-
-@media (max-width: 1024px) {
-    #chat-container {
-        width: min(320px, calc(100vw - 2rem));
-    }
+    transform: translateY(-1px);
 }
 
 @media (max-width: 768px) {
@@ -101,11 +129,11 @@
         width: calc(100% - 1.5rem);
         right: 0.75rem;
         bottom: 0.75rem;
-        max-height: min(420px, 70vh);
+        max-height: min(440px, 72vh);
     }
 
     #chat-box {
-        max-height: min(320px, 55vh);
+        max-height: min(340px, 55vh);
     }
 
     #chat-box button {
@@ -117,6 +145,6 @@
     #chat-toggle {
         bottom: 0.75rem;
         right: 0.75rem;
-        min-height: 44px;
+        min-height: 48px;
     }
 }

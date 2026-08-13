@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{TITLE}}</title>
     <meta name="description" content="{{DESCRIPTION}}">
-    <meta name="theme-color" content="#0531f8">
+    <meta name="theme-color" content="#1e3a8a">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="/assets/images/logo-placeholder.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/css/styles.css">
     {{CHAT_CSS}}
@@ -14,7 +17,7 @@
     <a class="skip-link" href="#contenido-principal">Saltar al contenido</a>
     {{HEADER}}
     {{TITLEBAR}}
-    <main id="contenido-principal">
+    <main id="contenido-principal"{{MAIN_CLASS}}>
         {{CONTENT}}
     </main>
     {{FOOTER}}

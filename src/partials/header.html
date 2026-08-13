@@ -1,27 +1,29 @@
-<header class="site-header">
+<header class="site-header" id="site-header">
     <div class="header-inner">
-        <a href="/" class="logo-header" aria-label="Ir al inicio">
-            <img src="/assets/images/logo-candelarios.jpg" alt="Logo de CGR Candelario y Asociados, S. en N.C. de C.V." width="140" height="140" onerror="this.src='/assets/images/logo-placeholder.svg'; this.onerror=null;">
+        <a href="/" class="brand-link" aria-label="Ir al inicio">
+            <img class="brand-logo" src="/assets/images/logo-candelarios.jpg" alt="Logo de CGR Candelario y Asociados" width="56" height="56" onerror="this.src='/assets/images/logo-placeholder.svg'; this.onerror=null;">
+            <span class="brand-text">
+                <span class="site-brand">CGR-CAS</span>
+                <span class="site-tagline">Contadores y Auditores</span>
+            </span>
         </a>
-        <div class="header-text">
-            <p class="site-brand">CGR-CAS</p>
-            <p class="site-tagline">Contadores y Auditores</p>
-        </div>
+
         <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="site-nav">
             <span></span>
             <span></span>
             <span></span>
         </button>
+
         <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
             <ul>
                 <li><a href="/"{{NAV_INICIO}}>Inicio</a></li>
                 <li><a href="/contadores"{{NAV_CONTADORES}}>Contadores</a></li>
                 <li><a href="/controlinterno"{{NAV_CONTROLINTERNO}}>Control Interno</a></li>
-                <li><a href="/administracionfree"{{NAV_ADMINISTRACIONFREE}}>Administración Free</a></li>
+                <li><a href="/administracionfree"{{NAV_ADMINISTRACIONFREE}}>Admin. Free</a></li>
                 <li><a href="/rrhh"{{NAV_RRHH}}>Recursos Humanos</a></li>
                 <li><a href="/auditores"{{NAV_AUDITORES}}>Auditores</a></li>
-                <li><a href="/contacto"{{NAV_CONTACTO}}>Contacto</a></li>
             </ul>
+            <a href="/contacto" class="nav-cta"{{NAV_CONTACTO}}>Contacto</a>
         </nav>
     </div>
 </header>
