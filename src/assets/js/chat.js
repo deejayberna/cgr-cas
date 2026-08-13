@@ -4,9 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatClose = document.getElementById("chat-close");
     const chatToggle = document.getElementById("chat-toggle");
 
-    if (!chatBox || !chatContainer) {
+    if (!chatBox || !chatContainer || !chatToggle) {
         return;
     }
+
+    let chatIniciado = false;
 
     function agregarMensaje(mensaje, clase) {
         const mensajeElemento = document.createElement("div");
@@ -45,7 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
         agregarMensaje(`Gracias, ${nombre}. ¿Cómo prefieres continuar?`, "mensaje");
         crearBoton("Ir a contacto", () => { window.location.href = "/contacto"; });
         crearBoton("WhatsApp", () => {
-            window.open("https://wa.me/525556157899?text=Hola%2C%20soy%20" + encodeURIComponent(nombre) + "%20y%20me%20interesa%20un%20servicio%20de%20CGR-CAS", "_blank");
+            window.open(
+                "https://wa.me/525556157899?text=Hola%2C%20soy%20" + encodeURIComponent(nombre) + "%20y%20me%20interesa%20un%20servicio%20de%20CGR-CAS",
+                "_blank"
+            );
         });
     }
 
@@ -64,9 +69,37 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    agregarMensaje("¡Hola! Soy el asistente de CGR-CAS.", "mensaje-bienvenida");
-    setTimeout(mostrarServicios, 800);
-    setTimeout(obtenerNombre, 2500);
+    function iniciarChat() {
+        if (chatIniciado) {
+            return;
+        }
+        chatIniciado = true;
+        agregarMensaje("¡Hola! Soy el asistente de CGR-CAS.", "mensaje-bienvenida");
+        setTimeout(mostrarServicios, 600);
+        setTimeout(obtenerNombre, 2000);
+    }
+
+    function abrirChat() {
+        chatContainer.classList.add("is-open");
+        chatContainer.setAttribute("aria-hidden", "false");
+        chatToggle.classList.add("is-hidden");
+        chatToggle.setAttribute("aria-expanded", "true");
+        iniciarChat();
+        if (chatClose) {
+            chatClose.focus();
+        }
+    }
+
+    function cerrarChat() {
+        chatContainer.classList.remove("is-open");
+        chatContainer.setAttribute("aria-hidden", "true");
+        chatToggle.classList.remove("is-hidden");
+        chatToggle.setAttribute("aria-expanded", "false");
+        chatToggle.focus();
+    }
+
+    chatContainer.setAttribute("aria-hidden", "true");
+    chatToggle.setAttribute("aria-expanded", "false");
 
     let isDragging = false;
     let offsetX = 0;
@@ -74,7 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatHeader = document.getElementById("chat-header");
 
     function startDrag(event) {
-        if (event.target === chatClose) return;
+        if (event.target === chatClose) {
+            return;
+        }
         isDragging = true;
         const rect = chatContainer.getBoundingClientRect();
         offsetX = event.clientX - rect.left;
@@ -86,7 +121,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function drag(event) {
-        if (!isDragging) return;
+        if (!isDragging) {
+            return;
+        }
         chatContainer.style.left = `${event.clientX - offsetX}px`;
         chatContainer.style.top = `${event.clientY - offsetY}px`;
     }
@@ -97,16 +134,13 @@ document.addEventListener("DOMContentLoaded", () => {
         document.removeEventListener("mouseup", stopDrag);
     }
 
-    if (chatHeader) chatHeader.addEventListener("mousedown", startDrag);
+    if (chatHeader) {
+        chatHeader.addEventListener("mousedown", startDrag);
+    }
 
-    if (chatClose && chatToggle) {
-        chatClose.addEventListener("click", () => {
-            chatContainer.style.display = "none";
-            chatToggle.style.display = "block";
-        });
-        chatToggle.addEventListener("click", () => {
-            chatContainer.style.display = "block";
-            chatToggle.style.display = "none";
-        });
+    chatToggle.addEventListener("click", abrirChat);
+
+    if (chatClose) {
+        chatClose.addEventListener("click", cerrarChat);
     }
 });
