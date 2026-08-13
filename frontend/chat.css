@@ -1,0 +1,98 @@
+/* Estilos Generales para el Chat */
+#chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 123, 255, 0.7); /* Color de fondo semi-transparente */
+    color: #fff;
+    border-radius: 10px;
+    width: 300px; /* Ancho fijo para escritorio */
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    transition: all 0.3s ease; /* Transición suave para todo el contenedor */
+}
+
+#chat-box {
+    overflow-y: auto;
+    max-height: 300px; /* Menor que el contenedor para dejar espacio para el input */
+}
+
+#chat-input {
+    width: calc(100% - 20px); /* Ajuste de ancho con padding interno */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Botón para enviar mensajes en el chat */
+#enviar-button {
+    width: 100%;
+    padding: 8px 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#enviar-button:hover {
+    background-color: #0056b3;
+}
+
+#enviar-button:active {
+    background-color: #004080;
+}
+
+/* Estilos para mensajes del usuario y del asistente */
+.mensaje {
+    padding: 8px 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    clear: both;
+}
+
+.mensaje-asistente {
+    background-color: #007bff; /* Azul para el asistente */
+}
+
+.mensaje-usuario {
+    background-color: #4CAF50; /* Verde para el usuario */
+    text-align: right;
+}
+
+/* Responsive Design para pantallas pequeñas */
+@media (max-width: 767px) {
+    #chat-container {
+        width: 90%; /* Más ancho en dispositivos móviles */
+        right: 5%; /* Centrado */
+        bottom: 10px; /* Más cerca del borde inferior */
+        max-height: 300px; /* Altura reducida */
+    }
+
+    #chat-box {
+        max-height: 220px; /* Ajuste para que el input no cubra demasiado contenido */
+    }
+}
+
+/* Estilos para reabrir el chat */
+#chat-toggle {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: none; /* Oculto por defecto hasta que se cierre el chat */
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10000; /* Asegurando que esté visible sobre otros elementos */
+}
+
+#chat-toggle:hover {
+    background-color: #0056b3;
+}

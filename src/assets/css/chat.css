@@ -1,0 +1,122 @@
+#chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(5, 49, 248, 0.95);
+    color: #ffffff;
+    border-radius: 10px;
+    width: 320px;
+    max-height: 420px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+}
+
+#chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    cursor: move;
+    user-select: none;
+    background: rgba(0, 0, 0, 0.15);
+    font-weight: 600;
+}
+
+#chat-close {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 0.25rem;
+}
+
+#chat-box {
+    overflow-y: auto;
+    max-height: 320px;
+    padding: 0.75rem 1rem 1rem;
+}
+
+#chat-box input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+}
+
+#chat-box button {
+    margin: 0.35rem 0.25rem 0.35rem 0;
+    padding: 0.45rem 0.75rem;
+    background-color: #ffffff;
+    color: #0531f8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#chat-box button:hover {
+    background-color: #e8eeff;
+}
+
+.mensaje,
+.mensaje-bienvenida {
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    margin: 0.35rem 0;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+#chat-toggle {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    display: none;
+    background-color: #0531f8;
+    color: #ffffff;
+    padding: 0.65rem 1rem;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    z-index: 10000;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#chat-toggle:hover {
+    background-color: #0426c4;
+}
+
+@media (max-width: 1024px) {
+    #chat-container {
+        width: min(320px, calc(100vw - 2rem));
+    }
+}
+
+@media (max-width: 768px) {
+    #chat-container {
+        width: calc(100% - 1.5rem);
+        right: 0.75rem;
+        bottom: 0.75rem;
+        max-height: min(420px, 70vh);
+    }
+
+    #chat-box {
+        max-height: min(320px, 55vh);
+    }
+
+    #chat-box button {
+        width: 100%;
+        min-height: 44px;
+        margin: 0.35rem 0;
+    }
+
+    #chat-toggle {
+        bottom: 0.75rem;
+        right: 0.75rem;
+        min-height: 44px;
+    }
+}

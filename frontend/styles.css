@@ -1,0 +1,271 @@
+/* Reset de estilos */
+body, h1, h2, h3, p, ul, li {
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.titulo {
+    background-color: #696969;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-left: 50px solid #fff;
+    border-right: 50px solid #fff;
+}
+
+.titulo h1 {
+    color: #fff;
+    margin: 0;
+    padding: 10px;
+    border-bottom: 2px solid #fff;
+    font-size: 28px;
+}
+
+header {
+    background-image: url('fondo-candelario.jpg');
+    background-size: cover; /* Cubre todo el espacio disponible */
+    background-position: right 0px top 550px; /* Mueve la imagen 10px a la derecha y 10px hacia arriba */
+    color: rgb(5, 49, 248); /* Cambia el color del texto para que destaque sobre el fondo */
+    text-align: center; /* Alineación del texto */
+    padding: 20px 10px; /* Espacio interior para no pegar el texto a los bordes */
+}
+
+.logo-header img {
+    max-height: 140px; /* Ajusta esto según el tamaño deseado del logo */
+    margin-bottom: 20px; /* Espacio debajo del logo */
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #070707;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: rgb(5, 49, 248);
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+.service {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.service ul {
+    padding-left: 20px; /* Asegura que la lista tenga un poco de margen a la izquierda */
+    list-style-type: none; /* Elimina los marcadores de lista por defecto */
+}
+
+.service li {
+    margin-bottom: 10px; /* Añade un espacio entre los elementos de la lista */
+    text-align: left; /* Alinea el texto a la izquierda */
+    position: relative; /* Posicionamiento relativo para los pseudoelementos */
+}
+
+.service li::before {
+    content: "•"; /* Agrega un marcador personalizado */
+    color: #333; /* Color del marcador */
+    position: absolute; /* Posiciona absolutamente dentro del li */
+    left: -15px; /* Mueve el marcador a la izquierda del texto */
+}
+
+
+.service:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.service a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.service a:hover {
+    background-color: rgb(5, 49, 248);
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.contacto, .informacion {
+    margin-bottom: 20px;
+}
+
+.informacion {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.mision, .vision, .quienessomos, .valores {
+    flex-basis: calc(25% - 20px);
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    background-color: #444;
+    border-radius: 5px;
+}
+
+.contacto h3, .informacion h3, .directorio h3 {
+    font-size: 20px;
+}
+
+.contacto p, .informacion p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.directorio {
+    padding: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+.cargo-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.cargo {
+    background-color: #444;
+    border-radius: 5px;
+    padding: 10px;
+    flex: 1 1 300px; /* Permite que cada cargo crezca pero no menos de 300px */
+}
+
+.cargo h4 {
+    margin: 0 0 10px 0; /* Espaciado entre el título del cargo y la lista de nombres */
+}
+
+.cargo ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cargo li {
+    margin-bottom: 5px; /* Espacio entre nombres */
+}
+
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px 5px; /* Reduce el padding para que el header ocupe menos espacio */
+    }
+
+    .titulo {
+        flex-direction: column; /* Alinea los elementos del título verticalmente */
+        height: auto; /* Permite que el contenedor del título se ajuste al contenido */
+        padding: 10px 0; /* Añade padding vertical */
+    }
+
+    nav ul {
+        padding: 0;
+        display: flex;
+        flex-direction: column; /* Coloca los enlaces de navegación uno debajo del otro */
+        align-items: center; /* Centra los enlaces en el bloque */
+    }
+
+    nav li {
+        margin-right: 0; /* Elimina el margen derecho para evitar desbordamientos */
+        margin-bottom: 10px; /* Espacio entre enlaces de navegación */
+    }
+
+    nav a {
+        font-size: 16px; /* Ajusta el tamaño de la fuente para mejorar la legibilidad */
+    }
+
+    .logo-header img {
+        max-height: 100px; /* Reduce el tamaño del logo */
+        margin-bottom: 10px; /* Reduce el espacio debajo del logo */
+    }
+
+    h1, h2, h3, .cargo h4 {
+        font-size: 16px; /* Reduce el tamaño de la fuente para los encabezados */
+    }
+
+    p, .contacto p, .informacion p, .directorio li {
+        font-size: 14px; /* Reduce el tamaño de la fuente para los párrafos y listas */
+    }
+
+    .service, .cargo {
+        width: 100%; /* Hace que los contenedores de servicios y cargos ocupen todo el ancho disponible */
+        margin: 10px 0; /* Ajusta los márgenes para un mejor espaciado vertical */
+    }
+
+    .service a, .back-button {
+        padding: 8px 12px; /* Reduce el padding de los botones */
+        font-size: 14px; /* Ajusta el tamaño de la fuente de los botones */
+    }
+
+    .informacion, .directorio {
+        flex-direction: column; /* Cambia la dirección de la disposición de flexbox a columna */
+    }
+
+    .mision, .vision, .quienessomos, .valores, .cargo {
+        flex-basis: 100%; /* Hace que cada sección ocupe el ancho completo */
+        margin: 10px 0; /* Ajusta el margen para dar más espacio entre secciones */
+    }
+
+    img {
+        max-width: 100%; /* Hace que las imágenes sean totalmente responsivas */
+        height: auto; /* Mantiene las proporciones de las imágenes al escalar */
+    }
+}
