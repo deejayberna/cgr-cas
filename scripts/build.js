@@ -9,6 +9,13 @@ const PUBLIC_DIR = path.join(ROOT, "public");
 const DEFAULT_DESCRIPTION =
     "CGR Candelario y Asociados — despacho de contadores y auditores en Ciudad de México. Servicios contables, fiscales, auditoría y recursos humanos.";
 
+const SITE_URL = (process.env.SITE_URL || "https://www.cghocontadores.mx").replace(/\/$/, "");
+const DEVELOPER_URL = "https://solucionesiotysoftware.online/";
+const DEVELOPER_NAME = "Soluciones IoT & Software";
+const OG_IMAGE_PATH = "/assets/images/og-image.jpg";
+const OG_IMAGE_WIDTH = 1200;
+const OG_IMAGE_HEIGHT = 630;
+
 const PAGE_CONFIG = {
     "index.html": {
         slug: "index",
@@ -23,6 +30,7 @@ const PAGE_CONFIG = {
         slug: "contadores",
         navKey: "contadores",
         title: "Servicios Contables — CGR-CAS",
+        description: "Consultoría fiscal, outsourcing contable, nómina y contabilidad general en CDMX. CGR Candelario y Asociados.",
         pageHeading: "Servicios Contables",
         pageSubtitle: "Consultoría fiscal, contabilidad general, nómina y outsourcing contable.",
         chat: true,
@@ -32,6 +40,7 @@ const PAGE_CONFIG = {
         slug: "controlinterno",
         navKey: "controlinterno",
         title: "Control Interno — CGR-CAS",
+        description: "Servicios de control interno empresarial: evaluación de riesgos, procesos y recomendaciones estratégicas en Ciudad de México.",
         pageHeading: "Control Interno",
         pageSubtitle: "Fortalece tus procesos, minimiza riesgos y protege los activos de tu empresa.",
         chat: true,
@@ -41,6 +50,7 @@ const PAGE_CONFIG = {
         slug: "administracionfree",
         navKey: "administracionfree",
         title: "Administración Free — CGR-CAS",
+        description: "Administración Free con productos Aspel: SAE, NOI, COI, Bancos y facturación electrónica para tu empresa.",
         pageHeading: "Administración Free",
         pageSubtitle: "Soluciones Aspel para gestionar tu negocio de forma eficiente.",
         chat: true,
@@ -50,6 +60,7 @@ const PAGE_CONFIG = {
         slug: "rrhh",
         navKey: "rrhh",
         title: "Recursos Humanos — CGR-CAS",
+        description: "Servicios de recursos humanos: reclutamiento, capacitación, gestión del desempeño y nóminas en Ciudad de México.",
         pageHeading: "Recursos Humanos",
         pageSubtitle: "Reclutamiento, capacitación y gestión del talento humano.",
         chat: true,
@@ -59,6 +70,7 @@ const PAGE_CONFIG = {
         slug: "auditores",
         navKey: "auditores",
         title: "Auditores — CGR-CAS",
+        description: "Auditoría financiera, operativa, tributaria, interna e informática. Despacho de auditores en Ciudad de México.",
         pageHeading: "Servicios de Auditoría",
         pageSubtitle: "Auditoría financiera, operativa, tributaria, interna e informática.",
         chat: true,
@@ -68,6 +80,7 @@ const PAGE_CONFIG = {
         slug: "legal",
         navKey: null,
         title: "Servicios Legales — CGR-CAS",
+        description: "Asesoría jurídica corporativa, laboral, mercantil y de propiedad intelectual para empresas en Ciudad de México.",
         pageHeading: "Servicios Legales",
         pageSubtitle: "Asesoría jurídica corporativa, laboral y mercantil.",
         chat: true,
@@ -77,6 +90,7 @@ const PAGE_CONFIG = {
         slug: "inversiones",
         navKey: null,
         title: "Inversiones — CGR-CAS",
+        description: "Estrategias de inversión y asesoría financiera para optimizar recursos y patrimonio empresarial.",
         pageHeading: "Inversiones",
         pageSubtitle: "Estrategias financieras para optimizar y hacer crecer tu patrimonio.",
         chat: true,
@@ -86,6 +100,7 @@ const PAGE_CONFIG = {
         slug: "contabilidad",
         navKey: null,
         title: "Contabilidad — CGR-CAS",
+        description: "Contabilidad general, estados financieros y registros contables precisos para tu empresa en CDMX.",
         pageHeading: "Contabilidad",
         pageSubtitle: "Control contable preciso para una toma de decisiones informada.",
         chat: true,
@@ -95,6 +110,7 @@ const PAGE_CONFIG = {
         slug: "pensiones",
         navKey: null,
         title: "Pensiones — CGR-CAS",
+        description: "Gestión de pensiones, esquemas de retiro y cumplimiento de obligaciones previsionales empresariales.",
         pageHeading: "Pensiones",
         pageSubtitle: "Gestión de esquemas de retiro y cumplimiento previsional.",
         chat: true,
@@ -104,6 +120,7 @@ const PAGE_CONFIG = {
         slug: "fiscal",
         navKey: null,
         title: "Servicios Fiscales — CGR-CAS",
+        description: "Cumplimiento fiscal, declaraciones, planeación tributaria y asesoría ante el SAT en Ciudad de México.",
         pageHeading: "Servicios Fiscales",
         pageSubtitle: "Cumplimiento tributario y planeación fiscal estratégica.",
         chat: true,
@@ -113,6 +130,7 @@ const PAGE_CONFIG = {
         slug: "finanzas",
         navKey: null,
         title: "Finanzas — CGR-CAS",
+        description: "Servicios financieros, análisis, proyecciones e indicadores para una administración empresarial sólida.",
         pageHeading: "Finanzas",
         pageSubtitle: "Análisis, proyecciones y administración financiera integral.",
         chat: true,
@@ -122,6 +140,7 @@ const PAGE_CONFIG = {
         slug: "corporativo",
         navKey: null,
         title: "Corporativo — CGR-CAS",
+        description: "Servicios corporativos, gobierno empresarial, estructuras societarias y procesos organizacionales.",
         pageHeading: "Corporativo",
         pageSubtitle: "Gobierno corporativo y estructuras empresariales.",
         chat: true,
@@ -131,6 +150,7 @@ const PAGE_CONFIG = {
         slug: "servicios-contables",
         navKey: null,
         title: "Servicios Contables — CGR-CAS",
+        description: "Servicios contables integrales: cumplimiento, reportes financieros y consultoría para empresas en México.",
         pageHeading: "Servicios Contables",
         pageSubtitle: "Soluciones integrales para la gestión contable de tu empresa.",
         chat: false,
@@ -141,6 +161,7 @@ const PAGE_CONFIG = {
         slug: "servicios-auditoria",
         navKey: null,
         title: "Servicios de Auditoría — CGR-CAS",
+        description: "Auditorías de cumplimiento, operacionales, evaluación de riesgos y consultoría de procesos empresariales.",
         pageHeading: "Servicios de Auditoría",
         pageSubtitle: "Auditorías de cumplimiento, operacionales y consultoría de procesos.",
         chat: false,
@@ -151,6 +172,7 @@ const PAGE_CONFIG = {
         slug: "contacto",
         navKey: "contacto",
         title: "Contacto — CGR-CAS",
+        description: "Contacta a CGR Candelario y Asociados en CDMX. Teléfono, correo y dirección de nuestro despacho contable.",
         chat: false,
         titleBar: false,
         singleColumn: true,
@@ -316,6 +338,254 @@ function buildContactContent() {
         </div>`;
 }
 
+function escapeHtml(value) {
+    return value
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+}
+
+function getPagePath(config) {
+    return config.slug === "index" ? "/" : `/${config.slug}`;
+}
+
+function buildFavicons() {
+    return `
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/images/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="/assets/images/favicon-16.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" sizes="180x180">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="application-name" content="CGR-CAS">
+    <meta name="apple-mobile-web-app-title" content="CGR-CAS">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-TileColor" content="#1e3a8a">
+    <meta name="msapplication-TileImage" content="${SITE_URL}/assets/images/favicon-192.png">
+    <meta name="msapplication-config" content="none">`;
+}
+
+function buildWebManifest() {
+    return JSON.stringify(
+        {
+            name: "CGR-CAS — Contadores y Auditores",
+            short_name: "CGR-CAS",
+            description: DEFAULT_DESCRIPTION,
+            start_url: "/",
+            scope: "/",
+            display: "standalone",
+            background_color: "#ffffff",
+            theme_color: "#1e3a8a",
+            lang: "es-MX",
+            icons: [
+                {
+                    src: "/assets/images/favicon-192.png",
+                    sizes: "192x192",
+                    type: "image/png",
+                    purpose: "any",
+                },
+                {
+                    src: "/assets/images/favicon-512.png",
+                    sizes: "512x512",
+                    type: "image/png",
+                    purpose: "any",
+                },
+                {
+                    src: "/assets/images/apple-touch-icon.png",
+                    sizes: "180x180",
+                    type: "image/png",
+                    purpose: "any",
+                },
+            ],
+        },
+        null,
+        2
+    );
+}
+
+async function generateIcons() {
+    const logoPath = path.join(FRONTEND_DIR, "logo-candelarios.jpg");
+    const outDir = path.join(PUBLIC_DIR, "assets", "images");
+    ensureDir(outDir);
+
+    if (!fs.existsSync(logoPath)) {
+        console.log("  ⚠ Logo no encontrado; se usará favicon.svg como respaldo");
+        return false;
+    }
+
+    let sharp;
+    try {
+        sharp = require("sharp");
+    } catch {
+        console.log("  ⚠ sharp no instalado; ejecuta npm install para generar iconos PNG");
+        return false;
+    }
+
+    const logo = sharp(logoPath);
+
+    await logo.clone().resize(32, 32, { fit: "cover" }).png().toFile(path.join(outDir, "favicon-32.png"));
+    await logo.clone().resize(16, 16, { fit: "cover" }).png().toFile(path.join(outDir, "favicon-16.png"));
+    await logo.clone().resize(180, 180, { fit: "cover" }).png().toFile(path.join(outDir, "apple-touch-icon.png"));
+    await logo.clone().resize(192, 192, { fit: "cover" }).png().toFile(path.join(outDir, "favicon-192.png"));
+    await logo.clone().resize(512, 512, { fit: "cover" }).png().toFile(path.join(outDir, "favicon-512.png"));
+
+    const logoBuffer = await sharp(logoPath)
+        .resize(260, 260, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
+        .png()
+        .toBuffer();
+
+    const ogBackground = Buffer.from(`<svg width="${OG_IMAGE_WIDTH}" height="${OG_IMAGE_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0f172a"/>
+                <stop offset="100%" stop-color="#1d4ed8"/>
+            </linearGradient>
+        </defs>
+        <rect width="${OG_IMAGE_WIDTH}" height="${OG_IMAGE_HEIGHT}" fill="url(#bg)"/>
+        <text x="680" y="280" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700">CGR-CAS</text>
+        <text x="680" y="340" text-anchor="middle" fill="#dbeafe" font-family="Arial, Helvetica, sans-serif" font-size="34">Contadores y Auditores</text>
+        <text x="680" y="390" text-anchor="middle" fill="#93c5fd" font-family="Arial, Helvetica, sans-serif" font-size="24">Ciudad de México · cghocontadores.mx</text>
+    </svg>`);
+
+    await sharp(ogBackground)
+        .composite([{ input: logoBuffer, top: 185, left: 120 }])
+        .jpeg({ quality: 88 })
+        .toFile(path.join(outDir, "og-image.jpg"));
+
+    fs.copyFileSync(path.join(outDir, "favicon-32.png"), path.join(PUBLIC_DIR, "favicon.ico"));
+
+    console.log("  ✓ favicon-16.png, favicon-32.png, apple-touch-icon.png");
+    console.log("  ✓ favicon-192.png, favicon-512.png, og-image.jpg, favicon.ico");
+    return true;
+}
+
+function buildSeoExtra(config, title, description) {
+    const pagePath = getPagePath(config);
+    const pageUrl = `${SITE_URL}${pagePath}`;
+    const imageUrl = `${SITE_URL}${OG_IMAGE_PATH}`;
+    const safeTitle = escapeHtml(title);
+    const safeDescription = escapeHtml(description);
+
+    const breadcrumbItems = [
+        { name: "Inicio", url: `${SITE_URL}/` },
+    ];
+
+    if (config.slug !== "index") {
+        breadcrumbItems.push({
+            name: config.pageHeading || title.split(" — ")[0],
+            url: pageUrl,
+        });
+    }
+
+    const breadcrumbJson = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: breadcrumbItems.map((item, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: item.name,
+            item: item.url,
+        })),
+    };
+
+    const organizationJson = {
+        "@context": "https://schema.org",
+        "@type": "AccountingService",
+        name: "CGR Candelario y Asociados",
+        alternateName: "CGR-CAS",
+        url: SITE_URL,
+        logo: imageUrl,
+        image: imageUrl,
+        description: DEFAULT_DESCRIPTION,
+        telephone: ["+52-55-5615-7899", "+52-55-5611-9585"],
+        email: ["ocandelario@gmail.com", "direccion@cghoccontadores.mx"],
+        address: {
+            "@type": "PostalAddress",
+            streetAddress: "Los Juárez No. 37-A, Col. San José Insurgentes",
+            addressLocality: "Ciudad de México",
+            addressCountry: "MX",
+        },
+        areaServed: {
+            "@type": "City",
+            name: "Ciudad de México",
+        },
+        sameAs: [],
+        creator: {
+            "@type": "Organization",
+            name: DEVELOPER_NAME,
+            url: DEVELOPER_URL,
+        },
+    };
+
+    const websiteJson = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "CGR-CAS — Contadores y Auditores",
+        url: SITE_URL,
+        inLanguage: "es-MX",
+        publisher: {
+            "@type": "Organization",
+            name: "CGR Candelario y Asociados",
+        },
+        creator: {
+            "@type": "Organization",
+            name: DEVELOPER_NAME,
+            url: DEVELOPER_URL,
+        },
+    };
+
+    return `
+    <link rel="canonical" href="${pageUrl}">
+    <link rel="author" href="${DEVELOPER_URL}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="CGR-CAS — Contadores y Auditores">
+    <meta property="og:title" content="${safeTitle}">
+    <meta property="og:description" content="${safeDescription}">
+    <meta property="og:url" content="${pageUrl}">
+    <meta property="og:image" content="${imageUrl}">
+    <meta property="og:image:secure_url" content="${imageUrl}">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="${OG_IMAGE_WIDTH}">
+    <meta property="og:image:height" content="${OG_IMAGE_HEIGHT}">
+    <meta property="og:image:alt" content="CGR-CAS — Contadores y Auditores en Ciudad de México">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${safeTitle}">
+    <meta name="twitter:description" content="${safeDescription}">
+    <meta name="twitter:image" content="${imageUrl}">
+    <meta name="twitter:image:alt" content="CGR-CAS — Contadores y Auditores en Ciudad de México">
+    <script type="application/ld+json">${JSON.stringify(organizationJson)}</script>
+    <script type="application/ld+json">${JSON.stringify(websiteJson)}</script>
+    <script type="application/ld+json">${JSON.stringify(breadcrumbJson)}</script>`;
+}
+
+function buildRobotsTxt() {
+    return `User-agent: *
+Allow: /
+
+Sitemap: ${SITE_URL}/sitemap.xml
+`;
+}
+
+function buildSitemapXml() {
+    const urls = Object.values(PAGE_CONFIG).map((config) => {
+        const loc = `${SITE_URL}${getPagePath(config)}`;
+        const priority = config.slug === "index" ? "1.0" : "0.8";
+        return `  <url>
+    <loc>${loc}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>${priority}</priority>
+  </url>`;
+    });
+
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.join("\n")}
+</urlset>
+`;
+}
+
 function buildPage(fileName, config, layout, footerTemplate) {
     const sourcePath = path.join(FRONTEND_DIR, fileName);
     const sourceHtml = read(sourcePath);
@@ -337,6 +607,8 @@ function buildPage(fileName, config, layout, footerTemplate) {
     let page = layout
         .replace("{{TITLE}}", title)
         .replace("{{DESCRIPTION}}", description)
+        .replace("{{FAVICONS}}", buildFavicons())
+        .replace("{{SEO_EXTRA}}", buildSeoExtra(config, title, description))
         .replace("{{HEADER}}", header)
         .replace("{{TITLEBAR}}", titleBar)
         .replace("{{MAIN_CLASS}}", mainClass)
@@ -371,21 +643,35 @@ function copyLegacyImages() {
 }
 
 function build() {
-    console.log("Construyendo sitio para Vercel...\n");
+    return (async () => {
+        console.log("Construyendo sitio para Vercel...\n");
+        console.log(`  Dominio: ${SITE_URL}\n`);
 
-    emptyDir(PUBLIC_DIR);
-    copyDir(path.join(SRC_DIR, "assets"), path.join(PUBLIC_DIR, "assets"));
-    copyLegacyImages();
+        emptyDir(PUBLIC_DIR);
+        copyDir(path.join(SRC_DIR, "assets"), path.join(PUBLIC_DIR, "assets"));
+        copyLegacyImages();
+        await generateIcons();
 
-    const layout = read(path.join(SRC_DIR, "layout.html"));
-    const footerTemplate = read(path.join(SRC_DIR, "partials", "footer.html"));
+        const layout = read(path.join(SRC_DIR, "layout.html"));
+        const footerTemplate = read(path.join(SRC_DIR, "partials", "footer.html"));
 
-    console.log("Generando páginas:");
-    Object.entries(PAGE_CONFIG).forEach(([fileName, config]) => {
-        buildPage(fileName, config, layout, footerTemplate);
-    });
+        console.log("Generando páginas:");
+        Object.entries(PAGE_CONFIG).forEach(([fileName, config]) => {
+            buildPage(fileName, config, layout, footerTemplate);
+        });
 
-    console.log("\nBuild completado en /public");
+        fs.writeFileSync(path.join(PUBLIC_DIR, "robots.txt"), buildRobotsTxt(), "utf8");
+        fs.writeFileSync(path.join(PUBLIC_DIR, "sitemap.xml"), buildSitemapXml(), "utf8");
+        fs.writeFileSync(path.join(PUBLIC_DIR, "site.webmanifest"), buildWebManifest(), "utf8");
+        console.log("  ✓ robots.txt");
+        console.log("  ✓ sitemap.xml");
+        console.log("  ✓ site.webmanifest");
+
+        console.log("\nBuild completado en /public");
+    })();
 }
 
-build();
+build().catch((error) => {
+    console.error(error);
+    process.exit(1);
+});

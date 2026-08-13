@@ -32,6 +32,10 @@ Abre [http://localhost:3000](http://localhost:3000).
 3. Vercel detectará automáticamente el build (`npm run build`) y la carpeta de salida (`public`).
 4. Conecta tu dominio personalizado en **Settings → Domains**.
 
+### Variable de entorno SEO
+
+En Vercel, configura `SITE_URL` con tu dominio final si difiere del predeterminado: `https://www.cghocontadores.mx`
+
 ### Imágenes
 
 Coloca estos archivos en `src/assets/images/` (o en `frontend/` para que el build los copie):
