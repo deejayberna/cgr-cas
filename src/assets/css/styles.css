@@ -855,40 +855,79 @@ main.page-single {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 0.75rem 1rem;
+    gap: 1rem;
 }
 
-.footer-credit {
+.site-footer a.footer-credit-card {
     display: inline-flex;
-    flex-direction: column;
-    gap: 0.1rem;
-    padding: 0.35rem 0.55rem;
-    border: 1px solid rgba(148, 163, 184, 0.22);
-    border-radius: 6px;
-    background: rgba(15, 23, 42, 0.45);
-    color: #94a3b8;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: 10px;
+    background: linear-gradient(160deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
     text-decoration: none;
-    line-height: 1.25;
-    transition: border-color var(--transition), background var(--transition), color var(--transition);
-}
-
-.footer-credit:hover {
     color: #cbd5e1;
-    border-color: rgba(148, 163, 184, 0.4);
-    background: rgba(30, 41, 59, 0.65);
+    line-height: 1.2;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.footer-credit-label {
-    font-size: 0.62rem;
-    letter-spacing: 0.04em;
+.site-footer a.footer-credit-card:hover {
+    color: #e2e8f0;
+    text-decoration: none;
+    border-color: rgba(147, 197, 253, 0.45);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    transform: translateY(-1px);
+}
+
+.site-footer a.footer-credit-card:visited {
+    color: #cbd5e1;
+    text-decoration: none;
+}
+
+.footer-credit-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    background: rgba(59, 130, 246, 0.15);
+    color: #93c5fd;
+    flex-shrink: 0;
+}
+
+.footer-credit-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+}
+
+.footer-credit-kicker {
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #64748b;
 }
 
-.footer-credit-brand {
+.footer-credit-name {
     font-size: 0.72rem;
-    font-weight: 500;
-    color: #cbd5e1;
+    font-weight: 600;
+    color: #e2e8f0;
+    white-space: nowrap;
+}
+
+.footer-credit-arrow {
+    font-size: 0.72rem;
+    color: #64748b;
+    margin-left: 0.1rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.site-footer a.footer-credit-card:hover .footer-credit-arrow {
+    color: #93c5fd;
+    transform: translate(1px, -1px);
 }
 
 /* ── Tablet ── */
@@ -1017,8 +1056,8 @@ main.page-single {
         text-align: center;
     }
 
-    .footer-credit {
-        align-items: center;
+    .footer-credit-name {
+        white-space: normal;
         text-align: center;
     }
 }
