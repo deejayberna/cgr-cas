@@ -171,11 +171,35 @@ const PAGE_CONFIG = {
     "contacto.html": {
         slug: "contacto",
         navKey: "contacto",
-        title: "Contacto — CGR-CAS",
-        description: "Contacta a CGR Candelario y Asociados en CDMX. Teléfono, correo y dirección de nuestro despacho contable.",
+        title: "Contacto — Despacho contable en CDMX | CGR-CAS",
+        description: "Contacta a CGR Candelario y Asociados en San José Insurgentes, CDMX. Teléfono, WhatsApp, correo y formulario.",
         chat: false,
-        titleBar: false,
+        titleBar: true,
+        pageHeading: "Contacto",
+        pageSubtitle: "Estamos en Col. San José Insurgentes. Respondemos en 24 horas hábiles.",
         singleColumn: true,
+        showCta: false,
+    },
+    "quienes-somos.html": {
+        slug: "quienes-somos",
+        navKey: "quienesomos",
+        title: "Quiénes somos — CGR Candelario y Asociados | CGR-CAS",
+        description: "Conoce al despacho CGR-CAS: contadores y auditores en Ciudad de México con más de 25 años de experiencia.",
+        pageHeading: "Quiénes somos",
+        pageSubtitle: "Despacho contable en San José Insurgentes, Ciudad de México.",
+        chat: true,
+        titleBar: true,
+    },
+    "aviso-privacidad.html": {
+        slug: "aviso-privacidad",
+        navKey: null,
+        title: "Aviso de privacidad — CGR-CAS",
+        description: "Aviso de privacidad de CGR Candelario y Asociados sobre el tratamiento de datos personales.",
+        pageHeading: "Aviso de privacidad",
+        chat: false,
+        titleBar: true,
+        singleColumn: true,
+        showCta: false,
     },
 };
 
@@ -226,6 +250,7 @@ function normalizeLinks(content) {
 function buildHeader(activeNavKey) {
     const navKeys = [
         "inicio",
+        "quienesomos",
         "contadores",
         "controlinterno",
         "administracionfree",
@@ -264,15 +289,29 @@ function buildPageHero(config) {
     </section>`;
 }
 
+function buildPageCta() {
+    return `
+            <section class="page-cta">
+                <h3>¿Te interesa este servicio?</h3>
+                <p>Cuéntanos tu necesidad y te orientamos sin compromiso. Respondemos en 24 horas hábiles.</p>
+                <div class="hero-actions">
+                    <a href="/contacto" class="btn btn-primary">Solicitar información</a>
+                    <a href="https://wa.me/525556157899?text=Hola%2C%20me%20interesa%20un%20servicio%20de%20CGR-CAS" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                </div>
+            </section>`;
+}
+
 function wrapPageContent(content, config) {
     if (config.slug === "index") {
         return content;
     }
 
+    const cta = config.showCta === false ? "" : buildPageCta();
+
     if (config.singleColumn) {
         return `
         <div class="page-content">
-            <article class="service-card page-article">${content}</article>
+            <article class="service-card page-article">${content}${cta}</article>
         </div>`;
     }
 
@@ -281,6 +320,7 @@ function wrapPageContent(content, config) {
             <div class="services-grid page-services">
                 ${content}
             </div>
+            ${cta}
         </div>`;
 }
 
@@ -288,13 +328,16 @@ function buildContactContent() {
     return `
         <div class="contact-page">
             <section class="contact-hero-card" aria-labelledby="contacto-titulo">
-                <h2 id="contacto-titulo">Hablemos de tu proyecto</h2>
-                <p>Estamos listos para atenderte. Escríbenos o llámanos y te responderemos a la brevedad.</p>
+                <h2 id="contacto-titulo">Hablemos de tu empresa</h2>
+                <p>Cuéntanos qué servicio necesitas: contabilidad, fiscal, nómina, auditoría o control interno. Respondemos en un máximo de <strong>24 horas hábiles</strong>.</p>
+                <div class="hero-actions">
+                    <a href="https://wa.me/525556157899?text=Hola%2C%20me%20interesa%20conocer%20sus%20servicios%20contables" class="btn btn-light" target="_blank" rel="noopener noreferrer">WhatsApp directo</a>
+                </div>
             </section>
             <div class="contact-grid">
                 <div class="contact-item">
                     <span class="contact-item-label">Dirección</span>
-                    Los Juárez No. 37-A, Col. San José Insurgentes, CDMX
+                    Los Juárez No. 37-A, Col. San José Insurgentes, Ciudad de México
                 </div>
                 <div class="contact-item">
                     <span class="contact-item-label">Teléfono</span>
@@ -302,37 +345,52 @@ function buildContactContent() {
                     <a href="tel:+525556119585">55 5611 9585</a>
                 </div>
                 <div class="contact-item">
-                    <span class="contact-item-label">Correo general</span>
-                    <a href="mailto:ocandelario@gmail.com">ocandelario@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-item-label">Correo corporativo</span>
+                    <span class="contact-item-label">Correo</span>
+                    <a href="mailto:ocandelario@gmail.com">ocandelario@gmail.com</a><br>
                     <a href="mailto:direccion@cghoccontadores.mx">direccion@cghoccontadores.mx</a>
                 </div>
+                <div class="contact-item">
+                    <span class="contact-item-label">Horario</span>
+                    Lunes a viernes, 9:00 a 18:00 hrs
+                </div>
             </div>
-            <section class="informacion" aria-label="Información corporativa">
-                <div class="mision">
-                    <h3>Misión</h3>
-                    <p>Proporcionar servicios contables y financieros de alta calidad para ayudar a nuestros clientes a alcanzar sus objetivos económicos y empresariales.</p>
-                </div>
-                <div class="vision">
-                    <h3>Visión</h3>
-                    <p>Ser líderes en el sector contable, reconocidos por nuestra excelencia en el servicio al cliente y nuestro compromiso con la integridad y la ética empresarial.</p>
-                </div>
-                <div class="quienessomos">
-                    <h3>Quiénes Somos</h3>
-                    <p>Un equipo de profesionales altamente calificados en contabilidad, finanzas y auditoría, con soluciones a medida para cada cliente.</p>
-                </div>
-                <div class="valores">
-                    <h3>Valores</h3>
-                    <ul class="valores-list">
-                        <li>Integridad</li>
-                        <li>Profesionalismo</li>
-                        <li>Compromiso</li>
-                        <li>Calidad</li>
-                        <li>Ética</li>
-                    </ul>
-                </div>
+            <section class="contact-form-section" aria-labelledby="formulario-titulo">
+                <h2 id="formulario-titulo">Envíanos un mensaje</h2>
+                <form class="contact-form" action="https://formsubmit.co/ocandelario@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Nueva consulta desde cghocontadores.mx">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <label>Nombre<input type="text" name="nombre" required autocomplete="name"></label>
+                    <label>Empresa<input type="text" name="empresa" autocomplete="organization"></label>
+                    <label>Correo<input type="email" name="email" required autocomplete="email"></label>
+                    <label>Teléfono<input type="tel" name="telefono" autocomplete="tel"></label>
+                    <label>Servicio de interés
+                        <select name="servicio" required>
+                            <option value="">Selecciona una opción</option>
+                            <option>Contabilidad / Contadores</option>
+                            <option>Fiscal / SAT</option>
+                            <option>Auditoría</option>
+                            <option>Nómina / RRHH</option>
+                            <option>Control interno</option>
+                            <option>Administración Aspel</option>
+                            <option>Otro</option>
+                        </select>
+                    </label>
+                    <label>Mensaje<textarea name="mensaje" rows="4" required placeholder="Cuéntanos brevemente qué necesitas"></textarea></label>
+                    <button type="submit" class="btn btn-primary">Enviar consulta</button>
+                </form>
+            </section>
+            <section class="contact-map" aria-label="Ubicación">
+                <h2>Cómo llegar</h2>
+                <iframe title="Mapa de CGR-CAS en San José Insurgentes" src="https://maps.google.com/maps?q=Los+Ju%C3%A1rez+37-A+San+Jos%C3%A9+Insurgentes+Ciudad+de+M%C3%A9xico&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </section>
+            <section class="faq-section" aria-labelledby="faq-titulo">
+                <h2 id="faq-titulo">Preguntas frecuentes</h2>
+                <details class="faq-item"><summary>¿Atienden solo empresas en CDMX?</summary><p>Principalmente damos servicio en Ciudad de México y área metropolitana, pero podemos atender clientes en otras entidades según el servicio requerido.</p></details>
+                <details class="faq-item"><summary>¿Puedo externalizar solo nómina o solo contabilidad?</summary><p>Sí. Puedes contratar servicios de forma modular: nómina, fiscal, contabilidad completa o auditoría, según lo que tu empresa necesite.</p></details>
+                <details class="faq-item"><summary>¿Qué pasa si el SAT me notifica una revisión?</summary><p>Te acompañamos en la preparación de documentación, revisión de declaraciones y estrategia de respuesta conforme a la normativa vigente.</p></details>
+                <details class="faq-item"><summary>¿La primera consulta tiene costo?</summary><p>La orientación inicial para conocer tu situación y proponer un servicio puede agendarse sin compromiso. Contáctanos para confirmar disponibilidad.</p></details>
+                <details class="faq-item"><summary>¿Qué sistemas contables manejan?</summary><p>Trabajamos con Aspel, CONTPAQi y otras plataformas según las necesidades de cada cliente. También apoyamos en Administración Free de Aspel.</p></details>
             </section>
             <a href="/" class="back-button">← Volver al inicio</a>
         </div>`;
